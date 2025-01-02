@@ -1,6 +1,10 @@
 import { Appbar } from "@repo/ui/appbar"
-export default function Homes(){
+import { FoodType } from "../../components/FoodType"
+export default function Homes() {
     return <div className="">
-        <Appbar/> 
+        <Appbar />
+        <div>
+            <FoodType/>
+        </div>
     </div>
 }
