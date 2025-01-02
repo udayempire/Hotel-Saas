@@ -1,5 +1,6 @@
+import { Appbar } from "@repo/ui/appbar"
 export default function Homes(){
-    return <div className="bg-red-500">
-        hi
+    return <div className="">
+        <Appbar/> 
     </div>
 }
