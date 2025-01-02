@@ -1,18 +1,27 @@
 import { Avatar } from "./Avatar.js"
+import { Searchbar } from "./Searchbar.js"
 
 export const Appbar = () => {
-    return <div className="p-4">
-        <div className="flex justify-between ">
-            <div className="flex items-center gap-4">
-                <Location_Logo/>
-                <div className="">
-                    <h1 className="font-bold text-red-600">Restaurant Name</h1>
-                    <p className="text-red-600 italic ">Restaurant Location</p>
+    return <div className="p-4 ">
+        <div>
+            <div className="flex justify-between ">
+                <div className="flex items-center gap-3">
+                    <Location_Logo />
+                    <div className="">
+                        <h1 className="font-bold text-red-600">Restaurant Name</h1>
+                        <p className="text-red-600 italic ">Restaurant Location</p>
+                    </div>
+                </div>
+                <div>
+                    <Avatar />
                 </div>
             </div>
-            <div>
-                <Avatar/>
+            <div className="flex justify-center mt-5">
+                <Searchbar placeholder="Search Foods,Drinks,Thali"/>
             </div>
+        </div>
+        <div>
+
         </div>
 
     </div>

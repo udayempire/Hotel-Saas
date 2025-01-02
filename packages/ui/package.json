@@ -8,7 +8,8 @@
     "./card": "./src/Card.tsx",
     "./code": "./src/Code.tsx",
     "./appbar": "./src/Appbar.tsx",
-    "./avatar": "./src/Avatar.tsx"
+    "./avatar": "./src/Avatar.tsx",
+    "./searchbar": "./src/Searchbar.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
