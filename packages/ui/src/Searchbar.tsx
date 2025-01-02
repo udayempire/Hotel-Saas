@@ -2,7 +2,7 @@ export const Searchbar = ({ placeholder }: { placeholder: string }) => {
     return (
       <div className="w-full flex justify-center relative">
         <input
-          className="border border-red-700 rounded-2xl bg-red-100 py-3 px-4 max-w-sm w-full mx-auto placeholder:px-6 placeholder:text-red-400 pr-10"
+          className="border border-red-700 rounded-2xl bg-red-100 py-3 px-4 max-w-sm w-full mx-auto placeholder:px-2 placeholder:text-red-400 pr-10"
           type="text"
           placeholder={placeholder}
         />
