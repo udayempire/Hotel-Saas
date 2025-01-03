@@ -1,6 +1,4 @@
 import { Avatar } from "./Avatar.js"
-import { Searchbar } from "./Searchbar.js"
-
 export const Appbar = () => {
     return <div className="p-4 ">
         <div>
@@ -15,9 +13,6 @@ export const Appbar = () => {
                 <div>
                     <Avatar />
                 </div>
-            </div>
-            <div className="flex justify-center mt-5">
-                <Searchbar placeholder="Search Foods,Drinks,Thali"/>
             </div>
         </div>
         <div>
