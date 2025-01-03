@@ -6,7 +6,10 @@ export default function Cart() {
     const [cartItems, setCartItems] = useState([
         { id: 1, itemName: "Dal Makhani", price: 99, quantity: 1 },
         { id: 2, itemName: "Dal Fry", price: 200, quantity: 1 },
-        { id: 3, itemName: "Butter Chicken Naan", price: 150, quantity: 1 },
+        { id: 3, itemName: "Butter Chicken", price: 180, quantity: 1 },
+        { id: 4, itemName: "Tandori Roti", price: 10, quantity: 1 },
+        { id: 5, itemName: "Shahi Panner", price: 150, quantity: 1 },
+        { id: 6, itemName: "Pepsi", price: 40, quantity: 1 },
     ]);
     const [totalPrice,setTotalPrice]= useState<number>(0)
     const updateTotalPrice=(price:number)=>{
@@ -14,7 +17,7 @@ export default function Cart() {
     }
     const removeItem=(id:number)=>{
         setCartItems((prevItems)=>prevItems.filter((Item)=>Item.id !==id))
-        
+
     }
 
     return <div>
