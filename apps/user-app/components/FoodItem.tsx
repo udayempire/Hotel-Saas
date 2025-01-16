@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FoodItemProps } from "../data/data"; // Import FoodItem type if it's defined elsewhere
+import { FoodItemProps } from "../../../data/data"; // Import FoodItem type if it's defined elsewhere
 
 type foodItemProps = {
   item: FoodItemProps; // Ensure the correct type is passed for item
