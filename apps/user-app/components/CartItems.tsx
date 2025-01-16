@@ -1,18 +1,17 @@
-import { useState, useEffect } from "react";
-
+import { useState } from "react"
 interface cartItemsProps {
     item:{id:number,itemName:string,price:number,quantity:number}
-    updateTotalPrice: (price: number) => void; 
+    // updateTotalPrice: number; 
     removeItem: (id: number) => void; 
 }
 
-export const CartItems = ({ item, updateTotalPrice,removeItem }: cartItemsProps) => {
+export const CartItems = ({ item,removeItem }: cartItemsProps) => {
     const [quantity, setQuantity] = useState<number>(1);
-    const [previousTotal, setPreviousTotal] = useState<number>(0); 
+    // const [previousTotal, setPreviousTotal] = useState<number>(0); 
 
     const handelDecrement = () => {
         if(quantity===1){
-            updateTotalPrice(-previousTotal)
+            // updateTotalPrice(-previousTotal)
             removeItem(item.id)
             setQuantity(0)
         }
@@ -25,13 +24,13 @@ export const CartItems = ({ item, updateTotalPrice,removeItem }: cartItemsProps)
         setQuantity(quantity + 1);
     };
 
-    useEffect(()=>{
-        const currentTotal = item.price *quantity;
-        if (currentTotal !==previousTotal ){
-            updateTotalPrice(currentTotal - previousTotal);
-            setPreviousTotal(currentTotal)
-        }
-    },[quantity,item.price,previousTotal,updateTotalPrice])
+    // useEffect(()=>{
+    //     const currentTotal = item.price *quantity;
+    //     if (currentTotal !==previousTotal ){
+    //         // updateTotalPrice(currentTotal - previousTotal);
+    //         setPreviousTotal(currentTotal)
+    //     }
+    // },[quantity,item.price,previousTotal,updateTotalPrice])
 
     return (
         <div className="flex flex-col p-2 px-3 justify-center items-center border drop-shadow-lg rounded-lg">

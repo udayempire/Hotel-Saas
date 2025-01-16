@@ -1,4 +1,4 @@
-import { Avatar } from "./Avatar.js"
+// import { Avatar } from "./Avatar.js"
 export const Appbar = () => {
     return <div className="p-4 ">
         <div>
@@ -11,7 +11,7 @@ export const Appbar = () => {
                     </div>
                 </div>
                 <div>
-                    <Avatar />
+                    {/* <Avatar /> */}
                 </div>
             </div>
         </div>

@@ -1,9 +1,10 @@
+
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { MenuBar } from "../components/MenuBar";
-
 const inter = Inter({ subsets: ["latin"] });
+import ClientLayout from "./clientLayout";
 
 export const metadata: Metadata = {
   title: "Qfiene",
@@ -16,13 +17,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} flex flex-col min-h-screen`}>
-        <main className="flex-grow">{children}</main>
-        <footer className="sticky bottom-0 z-20 flex justify-center bg-white">
-          <MenuBar />
-        </footer>
-      </body>
-    </html>
+      <html lang="en">
+        <ClientLayout>
+        <body className={`${inter.className} flex flex-col min-h-screen`}>
+          <main className="flex-grow">{children}</main>
+          <footer className="sticky bottom-0 z-20 flex justify-center bg-white">
+            <MenuBar />
+          </footer>
+        </body>
+        </ClientLayout>
+      </html>
   );
 }

@@ -1,11 +1,24 @@
+"use client"
 import Image from "next/image";
-import { FoodItemProps } from "../../../data/data"; // Import FoodItem type if it's defined elsewhere
-
+import { FoodItemProps } from "../../../data/data"; 
+import { useRecoilState } from "recoil";
+import { cartState } from "@repo/recoil/cardState";
 type foodItemProps = {
-  item: FoodItemProps; // Ensure the correct type is passed for item
+  item: FoodItemProps; 
 };
 
 export const FoodItem = ({ item }: foodItemProps) => {
+  const [cart,setCart]= useRecoilState(cartState)
+  const addToCart=({item}:foodItemProps)=>{
+    setCart((prevCart)=>{
+      const existingItem= prevCart.find((cartItem)=>cartItem.id===item.id);
+      if(existingItem){
+        return prevCart.map((cartItem)=>cartItem.id===item.id?{...cartItem,quantity:cartItem.quantity+1}:cartItem);
+      }
+      return[...prevCart,{...item,quantity:1}]
+    });
+  };
+
   return (
     <div>
       <div className="relative">
@@ -14,7 +27,7 @@ export const FoodItem = ({ item }: foodItemProps) => {
         <div className="px-2 left-2 right-2 absolute bottom-2 z-10">
           <div className="flex justify-between items-center">
             <p className="text-white">Rs {item.price}</p> {/* Displaying the dynamic price */}
-            <Cart />
+            <Cart onClick={()=>addToCart({item})} />
           </div>
         </div>
         {/* Food image */}
@@ -31,9 +44,9 @@ export const FoodItem = ({ item }: foodItemProps) => {
   );
 };
 
-const Cart = () => {
+const Cart = ({onClick}:{onClick:()=>void}) => {
   return (
-    <div>
+    <div onClick={onClick} className="pointer">
       <svg
         width="28"
         height="28"
