@@ -51,7 +51,7 @@ export const FoodItem = ({ item }: foodItemProps) => {
 
 const Cart = ({onClick}:{onClick:()=>void}) => {
   return (
-    <div onClick={onClick} className="pointer">
+    <div onClick={onClick} className="cursor-pointer">
       <svg
         width="28"
         height="28"
