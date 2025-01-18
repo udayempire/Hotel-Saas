@@ -1,12 +1,17 @@
 "use client"
 import Image from "next/image";
-import { FoodItemProps } from "../../../data/data"; 
 import { useRecoilState } from "recoil";
 import { cartState } from "@repo/recoil/cardState";
 type foodItemProps = {
   item: FoodItemProps; 
 };
-
+interface FoodItemProps{
+  id:number,
+  itemName:string,
+  price:number,
+  quantity:number,
+  availabilty?:boolean,
+}
 export const FoodItem = ({ item }: foodItemProps) => {
   const [cart,setCart]= useRecoilState(cartState)
   const addToCart=({item}:foodItemProps)=>{
