@@ -9,17 +9,16 @@ datasource db {
 
 model FoodItem {
   id          Int      @id @default(autoincrement())
-  itemName    String
+  itemName    String   @unique
   price       Int
   quantity    Int
+  categoryId  Int
   availability Boolean
-  category    Category[] @relation("FoodItemCategores")  // Correct relationship
-  
+  category    Category @relation("CategoryToFoodItems", fields: [categoryId], references: [id]) // One-to-many relation with Category
 }
 
 model Category {
   id          Int         @id @default(autoincrement())
-  categoryName String
-  foodItems   FoodItem[]  @relation("FoodItemCategores")  // Many-to-one relation with FoodItem - category can have multiple food item  
+  categoryName String      @unique
+  foodItems   FoodItem[]  @relation("CategoryToFoodItems") // One-to-many relation, correctly named
 }
-
