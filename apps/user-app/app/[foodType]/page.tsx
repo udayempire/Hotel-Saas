@@ -1,3 +1,4 @@
+"use client"
 import { FoodItem } from "../../components/FoodItem";
 import { notFound } from "next/navigation";
 import { useAllFoodItems } from "../hooks/index";
@@ -18,9 +19,10 @@ export default   function  FoodTypePage({ params }: { params: { foodType: string
       <h1 className="font-bold text-xl">{foodType.charAt(0).toUpperCase() + foodType.slice(1)}</h1>
       <div className="grid grid-cols-2 gap-6">
         {foodItems.map((item, index) => (
-          <FoodItem key={index} item={item}  /> //used recoil
+          <FoodItem key={index} item={item}/> //used recoil
         ))}
       </div>
     </div>
   );
 }
+//Note by developer:can use "getServerProps" to avoid using use client for better SEO 
