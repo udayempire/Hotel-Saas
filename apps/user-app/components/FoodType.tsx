@@ -1,23 +1,40 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
-
-const foodCategories = [
-  { name: "Starters", image: "/foodType1.png" },
-  { name: "Chinese", image: "/foodType1.png" },
-  { name: "Sweets", image: "/foodType1.png" },
-  { name: "North Indian", image: "/foodType1.png" },
-  { name: "Combos", image: "/foodType1.png" },
-  { name: "Drinks", image: "/foodType1.png" },
-];
+import { useEffect,useState } from "react"
+import axios from "axios"
+interface Category{
+  id: number,
+  categoryName: string
+}
 
 export const FoodType = () => {
+  const [categories,setCategories]= useState<Category[]>([]);
+  const [loading,setLoading] =useState<boolean>(true);
+  useEffect(()=>{
+    async function fetchCategories(){
+      try{
+        const response = await axios.get("/api/category")
+        setCategories(response.data)
+      }catch(error){
+        console.log("Error fetching categories", error)
+      }finally{
+        setLoading(false)
+      }
+    }
+    fetchCategories();
+  },[])
+
+  if(loading){
+    return <p>Loading Categories...</p>
+  }
   return (
     <div className="grid grid-cols-3 gap-5 mx-6">
-      {foodCategories.map((category) => (
-        <div key={category.name}>
-          <Link href={`/${category.name.toLowerCase().replace(" ", "")}`}>
-            <Image src={category.image} width={150} height={120} alt={category.name} />
-            <p className="font-bold text-center">{category.name}</p>
+      {categories.map((data) => (
+        <div key={data.categoryName}>
+          <Link href={`/${data.categoryName.toLowerCase().replace(" ", "")}`}>
+            <Image src={"/foodType1.png"} width={150} height={120} alt={data.categoryName} />
+            <p className="font-bold text-center">{data.categoryName}</p>
           </Link>
         </div>
       ))}
