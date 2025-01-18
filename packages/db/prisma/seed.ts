@@ -120,3 +120,5 @@ main()
     await prisma.$disconnect();
     process.exit(1)
   })
+
+  //npx tsx prisma/seed.ts
